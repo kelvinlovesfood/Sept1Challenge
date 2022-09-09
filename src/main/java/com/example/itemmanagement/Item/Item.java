@@ -47,4 +47,12 @@ public class Item {
                 ", price=" + price +
                 '}';
     }
+
+    public Item updateWith(Item newItem) {
+        this.id = newItem.id;
+        this.name = newItem.name;
+        this.desc = newItem.desc;
+        this.price = newItem.price;
+        return this;
+    }
 }

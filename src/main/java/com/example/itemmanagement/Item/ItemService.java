@@ -49,4 +49,14 @@ public class ItemService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+
+    public Optional<Item> update( Long id, Item newItem) {
+        // Only update an item if it can be found first.
+        return repository.findById(id)
+                .map(oldItem -> {
+                    Item updated = oldItem.updateWith(newItem);
+                    return repository.save(updated);
+                });
+    }
+
 }
